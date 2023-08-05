@@ -6,12 +6,12 @@ import Notiflix from 'notiflix';
 
 import { Form, FormLabel, FormInput, FormBtn } from './UpdateForm.styled';
 
-const UpdateForm = ({ onCloseModal, id }) => {
+const UpdateForm = ({ onCloseModal, contact }) => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
-  const [userName, setUserName] = useState('');
-  const [userNumber, setUserNumber] = useState('');
+  const [userName, setUserName] = useState(() => contact.name);
+  const [userNumber, setUserNumber] = useState(() => contact.number);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const UpdateForm = ({ onCloseModal, id }) => {
     }
 
     const updatedContact = {
-      contactId: id,
+      contactId: contact.id,
       name: userName,
       number: userNumber,
     };

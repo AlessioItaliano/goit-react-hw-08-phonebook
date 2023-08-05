@@ -35,14 +35,14 @@ const ContactList = () => {
   }, [dispatch]);
 
   const [isShowModal, setIsShowModal] = useState(false);
-  const [updateId, setUpdateId] = useState('');
+  const [selectedContact, setSelectedContact] = useState('');
 
   const toggleModal = () => {
     setIsShowModal(prev => !prev);
   };
 
-  const handleOpenUpdateModal = contactId => {
-    setUpdateId(contactId);
+  const handleOpenUpdateModal = contact => {
+    setSelectedContact(contact);
     toggleModal();
   };
 
@@ -67,7 +67,7 @@ const ContactList = () => {
                 </ContactButton>
                 <ContactButton
                   type="button"
-                  onClick={() => handleOpenUpdateModal(contact.id)}
+                  onClick={() => handleOpenUpdateModal(contact)}
                   id={contact.id}
                 >
                   Edit
@@ -80,7 +80,10 @@ const ContactList = () => {
               children={
                 <>
                   <Title>Update your contact</Title>
-                  <UpdateForm onCloseModal={toggleModal} id={updateId} />
+                  <UpdateForm
+                    onCloseModal={toggleModal}
+                    contact={selectedContact}
+                  />
                 </>
               }
               onCloseModal={toggleModal}
