@@ -63,14 +63,14 @@ const ContactList = () => {
                   onClick={handleDelete}
                   id={contact.id}
                 >
-                  Видалити
+                  Delete
                 </ContactButton>
                 <ContactButton
                   type="button"
                   onClick={() => handleOpenUpdateModal(contact.id)}
                   id={contact.id}
                 >
-                  Оновити
+                  Edit
                 </ContactButton>
               </ButtonsBox>
             </ContactItem>
